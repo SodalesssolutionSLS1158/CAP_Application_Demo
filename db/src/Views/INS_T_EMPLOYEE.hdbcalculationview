@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="INS_T_EMPLOYEE" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS" mdsCubeConversionExecution="AT_LOADING_TIME">
+<descriptions defaultDescription="INS_T_EMPLOYEE"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="INS_T_EMPTB">
+    <resourceUri>INS_T_EMPTB</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews/>
+
+<logicalModel id="INS_T_EMPTB">
+  <attributes>
+    <attribute id="EMPID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPID"/>
+      <keyMapping columnObjectName="INS_T_EMPTB" columnName="EMPID"/>
+    </attribute>
+    <attribute id="EMPNM" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPNM"/>
+      <keyMapping columnObjectName="INS_T_EMPTB" columnName="EMPNM"/>
+    </attribute>
+    <attribute id="DEPID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPID"/>
+      <keyMapping columnObjectName="INS_T_EMPTB" columnName="DEPID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="EMUNQ" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Unique id"/>
+      <measureMapping columnObjectName="INS_T_EMPTB" columnName="EMUNQ"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="ISDEL" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ISDEL"/>
+      <measureMapping columnObjectName="INS_T_EMPTB" columnName="ISDEL"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  </shapes>
+</layout>
+</Calculation:scenario>

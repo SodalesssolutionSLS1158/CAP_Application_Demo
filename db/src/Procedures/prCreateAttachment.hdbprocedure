@@ -1,0 +1,38 @@
+ PROCEDURE prCreateAttachment (
+      IN ATTID INTEGER,
+       FILNM NVARCHAR(100),
+       FLTYP NVARCHAR(100),
+       UPDBY NVARCHAR(100),
+       UPDDT DATE,
+       DESTX NVARCHAR(1000),
+       DMSID NVARCHAR(100),
+      OUT ATTIDD INTEGER
+    ) 
+  LANGUAGE SQLSCRIPT 
+  SQL SECURITY INVOKER 
+ AS 
+
+
+BEGIN 
+  -- Insert record
+  INSERT INTO INS_T_ATTTB (
+      FILNM,
+      FLTYP,
+      UPDBY,
+      UPDDT,
+      DESTX,
+      DMSID,
+      ISDEL
+    )
+  VALUES (
+      FILNM,
+      FLTYP,
+      UPDBY,
+      CURRENT_DATE,
+      DESTX,
+      DMSID,
+      1
+    );
+  -- Retrieve generated identity value (primary key)
+  --  CALL prGetSequence (COLUMN_NAME => 'ATTID',TABLE_NAME => 'INS_T_ATTTB',OSEQUENCE => ATTIDD);
+END;

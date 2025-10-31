@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="INS_T_ATTACHMENT" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS" mdsCubeConversionExecution="AT_LOADING_TIME">
+<descriptions defaultDescription="INS_T_ATTACHMENT"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="INS_T_ATTTB">
+    <resourceUri>INS_T_ATTTB</resourceUri>
+  </DataSource>
+  <DataSource id="INS_T_EMPTB">
+    <resourceUri>INS_T_EMPTB</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner" ignoreMultipleOutputsForFilter="false">
+    <viewAttributes>
+      <viewAttribute id="ATTID"/>
+      <viewAttribute id="FILNM"/>
+      <viewAttribute id="FLTYP"/>
+      <viewAttribute id="UPDBY"/>
+      <viewAttribute id="UPDDT"/>
+      <viewAttribute id="DESTX"/>
+      <viewAttribute id="DMSID"/>
+      <viewAttribute id="ISDEL"/>
+      <viewAttribute id="EMPNM"/>
+      <viewAttribute hidden="true" id="JOIN$UPDBY$EMPID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="INS_T_ATTTB">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ATTID" source="ATTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FILNM" source="FILNM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FLTYP" source="FLTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UPDBY" source="UPDBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UPDDT" source="UPDDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESTX" source="DESTX"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DMSID" source="DMSID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ISDEL" source="ISDEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$UPDBY$EMPID" source="UPDBY"/>
+    </input>
+    <input node="INS_T_EMPTB">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPNM" source="EMPNM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$UPDBY$EMPID" source="EMPID"/>
+    </input>
+    <joinAttribute name="JOIN$UPDBY$EMPID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1" filterExpressionLanguage="SQL" ignoreMultipleOutputsForFilter="false">
+  <attributes>
+    <attribute id="ATTID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Unique id"/>
+      <keyMapping columnObjectName="Join_1" columnName="ATTID"/>
+    </attribute>
+    <attribute id="FILNM" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILNM"/>
+      <keyMapping columnObjectName="Join_1" columnName="FILNM"/>
+    </attribute>
+    <attribute id="FLTYP" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FLTYP"/>
+      <keyMapping columnObjectName="Join_1" columnName="FLTYP"/>
+    </attribute>
+    <attribute id="UPDBY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UPDBY"/>
+      <keyMapping columnObjectName="Join_1" columnName="UPDBY"/>
+    </attribute>
+    <attribute id="UPDDT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UPDDT"/>
+      <keyMapping columnObjectName="Join_1" columnName="UPDDT"/>
+    </attribute>
+    <attribute id="DESTX" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESTX"/>
+      <keyMapping columnObjectName="Join_1" columnName="DESTX"/>
+    </attribute>
+    <attribute id="DMSID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DMSID"/>
+      <keyMapping columnObjectName="Join_1" columnName="DMSID"/>
+    </attribute>
+    <attribute id="ISDEL" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ISDEL"/>
+      <keyMapping columnObjectName="Join_1" columnName="ISDEL"/>
+    </attribute>
+    <attribute id="EMPNM" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPNM"/>
+      <keyMapping columnObjectName="Join_1" columnName="EMPNM"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/></logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="181"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="191" y="245"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="INS_T_ATTTB" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="143.11328125"/>
+    </shape>
+    <shape modelObjectName="INS_T_EMPTB" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="146.681640625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

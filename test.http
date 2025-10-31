@@ -1,0 +1,10 @@
+###GET
+GET http://localhost:4004/odata/v4/site-inspection/GetAttachment HTTP/1.1
+
+###Post
+POST http://localhost:4004/odata/v4/site-inspection/udEdZTYjwE
+Content-Type: application/json
+
+{
+    "oPayload":"{\"FILNM\":\"InspectionPhoto_001.jpg\",\"FLTYP\":\"image/jpeg\",\"UPDBY\":\"SLS1158\",\"DESTX\":\"Site inspection photo from Zone A\",\"DMSID\":\"DMS_20251030_001\"}"
+}

@@ -1,0 +1,10 @@
+COLUMN TABLE "INS_T_ATTTB"(
+            "ATTID" INTEGER NOT NULL primary key GENERATED ALWAYS AS IDENTITY ( START WITH 1 INCREMENT BY 1) COMMENT 'Unique id',
+            "FILNM" NVARCHAR(100),
+            "FLTYP" NVARCHAR(100),
+            "UPDBY" NVARCHAR(100),
+            "UPDDT" DATE,
+            "DESTX" NVARCHAR(1000),
+            "DMSID" NVARCHAR(100),
+            "ISDEL" INTEGER
+);
