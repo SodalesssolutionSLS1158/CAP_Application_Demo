@@ -25,6 +25,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: SiteInspection_HDI
+      - name: SiteInspection-auth
 
   - name: SiteInspection-db-deployer
     type: hdb
@@ -40,3 +41,12 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: SiteInspection-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: SiteInspection-${org}-${space}
+        tenant-mode: dedicated

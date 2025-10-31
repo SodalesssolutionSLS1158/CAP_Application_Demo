@@ -6,7 +6,8 @@
     "@cap-js/hana": "^2",
     "@sap/cds": "^9",
     "express": "^4",
-    "hana-cli": "^3.202504.1"
+    "hana-cli": "^3.202504.1",
+    "@sap/xssec": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
@@ -26,6 +27,11 @@
       "db": "hana",
       "auth": {
         "kind": "xsuaa"
+      },
+      "[production]": {
+        "auth": {
+          "kind": "xsuaa"
+        }
       }
     },
     "sql": {
