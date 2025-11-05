@@ -5,16 +5,18 @@
   "dependencies": {
     "@cap-js/hana": "^2",
     "@sap/cds": "^9",
+    "@sap/xssec": "^4",
+    "axios": "^1.13.1",
+    "crypto-js": "^4.2.0",
     "express": "^4",
-    "hana-cli": "^3.202504.1",
-    "@sap/xssec": "^4"
+    "hana-cli": "^3.202504.1"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
     "@sap/cds-dk": "^9",
     "cds-plugin-ui5": "^0.13.0",
-    "rimraf": "^5.0.5",
-    "mbt": "^1.2.29"
+    "mbt": "^1.2.29",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
     "start": "cds-serve",

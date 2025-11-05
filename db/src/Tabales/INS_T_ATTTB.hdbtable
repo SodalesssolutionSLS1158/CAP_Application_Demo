@@ -6,5 +6,6 @@ COLUMN TABLE "INS_T_ATTTB"(
             "UPDDT" DATE,
             "DESTX" NVARCHAR(1000),
             "DMSID" NVARCHAR(100),
-            "ISDEL" INTEGER
+            "ISDEL" INTEGER,
+            "INSID" INTEGER
 );

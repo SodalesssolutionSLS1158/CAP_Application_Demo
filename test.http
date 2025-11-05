@@ -8,3 +8,15 @@ Content-Type: application/json
 {
     "oPayload":"{\"FILNM\":\"InspectionPhoto_001.jpg\",\"FLTYP\":\"image/jpeg\",\"UPDBY\":\"SLS1158\",\"DESTX\":\"Site inspection photo from Zone A\",\"DMSID\":\"DMS_20251030_001\"}"
 }
+
+###
+POST http://localhost:4004/odata/v4/site-inspection/GetCreateAudit
+Content-Type: application/json
+
+{
+    "AUDID":1,
+    "SECUP":"Attachment Added",
+    "UPDDT":"2025-11-04",
+     "UPDBY":"SLS1158",
+     "ISDEL":"1"
+}

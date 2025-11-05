@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="INS_T_ATTACHMENTVIEW" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS">
+<descriptions defaultDescription="INS_T_ATTACHMENTVIEW"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="INS_T_ATTTB">
+    <resourceUri>INS_T_ATTTB</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews/>
+
+<logicalModel id="INS_T_ATTTB">
+  <attributes>
+    <attribute id="FILNM" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILNM"/>
+      <keyMapping columnObjectName="INS_T_ATTTB" columnName="FILNM"/>
+    </attribute>
+    <attribute id="FLTYP" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FLTYP"/>
+      <keyMapping columnObjectName="INS_T_ATTTB" columnName="FLTYP"/>
+    </attribute>
+    <attribute id="UPDBY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UPDBY"/>
+      <keyMapping columnObjectName="INS_T_ATTTB" columnName="UPDBY"/>
+    </attribute>
+    <attribute id="UPDDT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UPDDT"/>
+      <keyMapping columnObjectName="INS_T_ATTTB" columnName="UPDDT"/>
+    </attribute>
+    <attribute id="DESTX" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESTX"/>
+      <keyMapping columnObjectName="INS_T_ATTTB" columnName="DESTX"/>
+    </attribute>
+    <attribute id="DMSID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DMSID"/>
+      <keyMapping columnObjectName="INS_T_ATTTB" columnName="DMSID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ATTID" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Unique id"/>
+      <measureMapping columnObjectName="INS_T_ATTTB" columnName="ATTID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="ISDEL" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ISDEL"/>
+      <measureMapping columnObjectName="INS_T_ATTTB" columnName="ISDEL"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="INSID" order="9" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="INSID"/>
+      <measureMapping columnObjectName="INS_T_ATTTB" columnName="INSID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  </shapes>
+</layout>
+</Calculation:scenario>

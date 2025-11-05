@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="INS_T_INSPECTIONTEAM" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS" mdsCubeConversionExecution="AT_LOADING_TIME">
+<descriptions defaultDescription="INS_T_INSPECTIONTEAM"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="INS_T_EMPTB">
+    <resourceUri>INS_T_EMPTB</resourceUri>
+  </DataSource>
+  <DataSource id="INS_T_INSTEAM">
+    <resourceUri>INS_T_INSTEAM</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="EMPID"/>
+      <viewAttribute id="EMPNM"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="INS_T_EMPTB"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="INSTID"/>
+      <viewAttribute id="INTEID"/>
+      <viewAttribute id="DESCP"/>
+      <viewAttribute id="INSID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="INS_T_INSTEAM"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="INSTID"/>
+      <viewAttribute id="INTEID"/>
+      <viewAttribute id="DESCP"/>
+      <viewAttribute id="INSID"/>
+      <viewAttribute id="EMPID"/>
+      <viewAttribute id="EMPNM"/>
+      <viewAttribute hidden="true" id="JOIN$INTEID$EMPID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSTID" source="INSTID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INTEID" source="INTEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCP" source="DESCP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSID" source="INSID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$INTEID$EMPID" source="INTEID"/>
+    </input>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPID" source="EMPID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPNM" source="EMPNM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$INTEID$EMPID" source="EMPID"/>
+    </input>
+    <joinAttribute name="JOIN$INTEID$EMPID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="INSTID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Inspection Team Unique ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="INSTID"/>
+    </attribute>
+    <attribute id="INTEID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INTEID"/>
+      <keyMapping columnObjectName="Join_1" columnName="INTEID"/>
+    </attribute>
+    <attribute id="DESCP" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCP"/>
+      <keyMapping columnObjectName="Join_1" columnName="DESCP"/>
+    </attribute>
+    <attribute id="INSID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INSID"/>
+      <keyMapping columnObjectName="Join_1" columnName="INSID"/>
+    </attribute>
+    <attribute id="EMPID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPID"/>
+      <keyMapping columnObjectName="Join_1" columnName="EMPID"/>
+    </attribute>
+    <attribute id="EMPNM" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPNM"/>
+      <keyMapping columnObjectName="Join_1" columnName="EMPNM"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-186" y="267"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="444" y="267"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="197"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

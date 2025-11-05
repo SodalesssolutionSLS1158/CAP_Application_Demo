@@ -24,6 +24,7 @@
       <viewAttribute id="DMSID"/>
       <viewAttribute id="ISDEL"/>
       <viewAttribute id="EMPNM"/>
+      <viewAttribute id="INSID"/>
       <viewAttribute hidden="true" id="JOIN$UPDBY$EMPID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -36,6 +37,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="DESTX" source="DESTX"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DMSID" source="DMSID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ISDEL" source="ISDEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSID" source="INSID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$UPDBY$EMPID" source="UPDBY"/>
     </input>
     <input node="INS_T_EMPTB">
@@ -46,7 +48,7 @@
   </calculationView>
 </calculationViews>
 
-<logicalModel id="Join_1" filterExpressionLanguage="SQL" ignoreMultipleOutputsForFilter="false">
+<logicalModel id="Join_1" ignoreMultipleOutputsForFilter="false">
   <attributes>
     <attribute id="ATTID" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Unique id"/>
@@ -84,6 +86,11 @@
       <descriptions defaultDescription="EMPNM"/>
       <keyMapping columnObjectName="Join_1" columnName="EMPNM"/>
     </attribute>
+  
+    <attribute id="INSID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INSID"/>
+      <keyMapping columnObjectName="Join_1" columnName="INSID"/>
+    </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures/>
@@ -104,11 +111,11 @@
     </shape>
     <shape modelObjectName="INS_T_ATTTB" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="143.11328125"/>
+      <rectangleSize width="143"/>
     </shape>
     <shape modelObjectName="INS_T_EMPTB" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="620" y="30"/>
-      <rectangleSize width="146.681640625"/>
+      <rectangleSize width="146"/>
     </shape>
   </shapes>
 </layout>

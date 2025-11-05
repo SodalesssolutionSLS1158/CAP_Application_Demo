@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="INS_T_SITEINSPECTION" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS">
+<descriptions defaultDescription="INS_T_SITEINSPECTION"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="INS_T_INSTB">
+    <resourceUri>INS_T_INSTB</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews/>
+
+<logicalModel id="INS_T_INSTB">
+  <attributes>
+    <attribute id="INSID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Unique id"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="INSID"/>
+    </attribute>
+    <attribute id="REPBY" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REPBY"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="REPBY"/>
+    </attribute>
+    <attribute id="FACID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FACID"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="FACID"/>
+    </attribute>
+    <attribute id="DEPID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPID"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="DEPID"/>
+    </attribute>
+    <attribute id="AREAT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AREAT"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="AREAT"/>
+    </attribute>
+    <attribute id="INSLD" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INSLD"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="INSLD"/>
+    </attribute>
+    <attribute id="SHIFT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SHIFT"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="SHIFT"/>
+    </attribute>
+    <attribute id="INSDT" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INSDT"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="INSDT"/>
+    </attribute>
+    <attribute id="BULCL" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BULCL"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="BULCL"/>
+    </attribute>
+    <attribute id="SICID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SICID"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="SICID"/>
+    </attribute>
+    <attribute id="POSCT" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSCT"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="POSCT"/>
+    </attribute>
+    <attribute id="TOTSA" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TOTSA"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="TOTSA"/>
+    </attribute>
+    <attribute id="TOTNI" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TOTNI"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="TOTNI"/>
+    </attribute>
+    <attribute id="TOTNA" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TOTNA"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="TOTNA"/>
+    </attribute>
+    <attribute id="ISSAV" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ISSAV"/>
+      <keyMapping columnObjectName="INS_T_INSTB" columnName="ISSAV"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  </shapes>
+</layout>
+</Calculation:scenario>
