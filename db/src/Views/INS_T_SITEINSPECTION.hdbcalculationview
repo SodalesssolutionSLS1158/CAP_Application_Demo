@@ -1,77 +1,221 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="INS_T_SITEINSPECTION" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="INS_T_SITEINSPECTION" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS">
 <descriptions defaultDescription="INS_T_SITEINSPECTION"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
+  <DataSource id="INS_T_EMPTB">
+    <resourceUri>INS_T_EMPTB</resourceUri>
+  </DataSource>
   <DataSource id="INS_T_INSTB">
     <resourceUri>INS_T_INSTB</resourceUri>
   </DataSource>
+  <DataSource id="Projection_3$$$$INS_T_EMPTB$$">
+    <resourceUri>INS_T_EMPTB</resourceUri>
+  </DataSource>
 </dataSources>
 <snapshotProcedures/>
-<calculationViews/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="EMPID"/>
+      <viewAttribute id="EMPNM"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="INS_T_EMPTB"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="INSID"/>
+      <viewAttribute id="REPBY"/>
+      <viewAttribute id="FACID"/>
+      <viewAttribute id="DEPID"/>
+      <viewAttribute id="AREAT"/>
+      <viewAttribute id="INSLD"/>
+      <viewAttribute id="SHIFT"/>
+      <viewAttribute id="INSDT"/>
+      <viewAttribute id="BULCL"/>
+      <viewAttribute id="SICID"/>
+      <viewAttribute id="POSCT"/>
+      <viewAttribute id="TOTSA"/>
+      <viewAttribute id="TOTNI"/>
+      <viewAttribute id="TOTNA"/>
+      <viewAttribute id="ISSAV"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="INS_T_INSTB"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes>
+      <viewAttribute id="EMPID"/>
+      <viewAttribute id="EMPNM"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_3$$$$INS_T_EMPTB$$"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="Projection_2" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="INSID"/>
+      <viewAttribute id="REPBY"/>
+      <viewAttribute id="FACID"/>
+      <viewAttribute id="DEPID"/>
+      <viewAttribute id="AREAT"/>
+      <viewAttribute id="INSLD"/>
+      <viewAttribute id="SHIFT"/>
+      <viewAttribute id="INSDT"/>
+      <viewAttribute id="BULCL"/>
+      <viewAttribute id="SICID"/>
+      <viewAttribute id="POSCT"/>
+      <viewAttribute id="TOTSA"/>
+      <viewAttribute id="TOTNI"/>
+      <viewAttribute id="TOTNA"/>
+      <viewAttribute id="ISSAV"/>
+      <viewAttribute id="INSLDNM"/>
+      <viewAttribute hidden="true" id="JOIN$INSLD$EMPID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSID" source="INSID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REPBY" source="REPBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACID" source="FACID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPID" source="DEPID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AREAT" source="AREAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSLD" source="INSLD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIFT" source="SHIFT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSDT" source="INSDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BULCL" source="BULCL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SICID" source="SICID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSCT" source="POSCT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTSA" source="TOTSA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTNI" source="TOTNI"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTNA" source="TOTNA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ISSAV" source="ISSAV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$INSLD$EMPID" source="INSLD"/>
+    </input>
+    <input node="Projection_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSLDNM" source="EMPNM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$INSLD$EMPID" source="EMPID"/>
+    </input>
+    <joinAttribute name="JOIN$INSLD$EMPID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="Projection_2" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="INSID"/>
+      <viewAttribute id="REPBY"/>
+      <viewAttribute id="FACID"/>
+      <viewAttribute id="DEPID"/>
+      <viewAttribute id="AREAT"/>
+      <viewAttribute id="INSLD"/>
+      <viewAttribute id="SHIFT"/>
+      <viewAttribute id="INSDT"/>
+      <viewAttribute id="BULCL"/>
+      <viewAttribute id="SICID"/>
+      <viewAttribute id="POSCT"/>
+      <viewAttribute id="TOTSA"/>
+      <viewAttribute id="TOTNI"/>
+      <viewAttribute id="TOTNA"/>
+      <viewAttribute id="ISSAV"/>
+      <viewAttribute id="REPBYNM"/>
+      <viewAttribute id="INSLDNM"/>
+      <viewAttribute hidden="true" id="JOIN$REPBY$EMPID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSID" source="INSID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REPBY" source="REPBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACID" source="FACID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPID" source="DEPID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AREAT" source="AREAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSLD" source="INSLD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIFT" source="SHIFT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSDT" source="INSDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BULCL" source="BULCL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SICID" source="SICID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSCT" source="POSCT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTSA" source="TOTSA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTNI" source="TOTNI"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTNA" source="TOTNA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ISSAV" source="ISSAV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INSLDNM" source="INSLDNM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$REPBY$EMPID" source="REPBY"/>
+    </input>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REPBYNM" source="EMPNM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$REPBY$EMPID" source="EMPID"/>
+    </input>
+    <joinAttribute name="JOIN$REPBY$EMPID"/>
+  </calculationView>
+</calculationViews>
 
-<logicalModel id="INS_T_INSTB">
+<logicalModel id="Join_1_2">
   <attributes>
     <attribute id="INSID" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Unique id"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="INSID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="INSID"/>
     </attribute>
     <attribute id="REPBY" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="REPBY"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="REPBY"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="REPBY"/>
     </attribute>
     <attribute id="FACID" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="FACID"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="FACID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="FACID"/>
     </attribute>
     <attribute id="DEPID" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DEPID"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="DEPID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="DEPID"/>
     </attribute>
     <attribute id="AREAT" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="AREAT"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="AREAT"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="AREAT"/>
     </attribute>
     <attribute id="INSLD" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="INSLD"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="INSLD"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="INSLD"/>
     </attribute>
     <attribute id="SHIFT" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SHIFT"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="SHIFT"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="SHIFT"/>
     </attribute>
     <attribute id="INSDT" order="8" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="INSDT"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="INSDT"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="INSDT"/>
     </attribute>
     <attribute id="BULCL" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="BULCL"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="BULCL"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="BULCL"/>
     </attribute>
     <attribute id="SICID" order="10" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SICID"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="SICID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="SICID"/>
     </attribute>
     <attribute id="POSCT" order="11" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="POSCT"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="POSCT"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="POSCT"/>
     </attribute>
     <attribute id="TOTSA" order="12" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="TOTSA"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="TOTSA"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="TOTSA"/>
     </attribute>
     <attribute id="TOTNI" order="13" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="TOTNI"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="TOTNI"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="TOTNI"/>
     </attribute>
     <attribute id="TOTNA" order="14" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="TOTNA"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="TOTNA"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="TOTNA"/>
     </attribute>
     <attribute id="ISSAV" order="15" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ISSAV"/>
-      <keyMapping columnObjectName="INS_T_INSTB" columnName="ISSAV"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="ISSAV"/>
+    </attribute>
+    <attribute id="REPBYNM" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPNM"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="REPBYNM"/>
+    </attribute>
+    <attribute id="INSLDNM" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPNM"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="INSLDNM"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -82,11 +226,40 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="100" y="105"/>
+      <upperLeftCorner x="361.75405278666415" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
     
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="512" y="391.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="391.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="236.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="320" y="52"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="330" y="155"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="391.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
   </shapes>
 </layout>
 </Calculation:scenario>

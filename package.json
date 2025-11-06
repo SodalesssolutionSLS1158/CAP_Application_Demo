@@ -23,7 +23,8 @@
     "watch-employeeattachments": "cds watch --open employeeattachments/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy SiteInspection --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-siteinspectionui": "cds watch --open siteinspectionui/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
@@ -56,6 +57,7 @@
     "app/*"
   ],
   "sapux": [
-    "app/employeeattachments"
+    "app/employeeattachments",
+    "app/siteinspectionui"
   ]
 }

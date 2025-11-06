@@ -39,6 +39,12 @@ annotate service.GetEmployee with @(
             ID : 'Attachments',
             Target : 'atNzxtYkNnmXsH42/@UI.LineItem#Attachments',
         },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'basic detail',
+            ID : 'basicdetail',
+            Target : '@UI.FieldGroup#basicdetail',
+        },
     ],
     UI.LineItem : [
         {
@@ -63,14 +69,26 @@ annotate service.GetEmployee with @(
             Value : ISDEL,
         },
     ],
-    UI.FieldGroup #attachemntinform : {
-        $Type : 'UI.FieldGroupType',
-        Data : [
-        ],
-    },
     UI.HeaderInfo : {
         TypeNamePlural : 'Employee',
         TypeName : '',
+    },
+    UI.FieldGroup #basicdetail : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : DEPID,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : EMPID,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : EMPNM,
+            },
+        ],
     },
 );
 

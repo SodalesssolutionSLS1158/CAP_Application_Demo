@@ -11,20 +11,23 @@ async function CreateAttachment(res) {
             validatePayloadValue(oResData.FILNM),
             validatePayloadValue(oResData.FLTYP),
             validatePayloadValue(oResData.UPDBY),
-            validatePayloadValue(oResData.UPDDT),
+            // "2025-11-06",
             validatePayloadValue(oResData.DESTX),
             validatePayloadValue(oResData.DMSID),
-            null // OUT parameter placeholder
+            // 0 // OUT parameter placeholder
         ];
-
+        console.log(params);
         const result = await cds.run(
-            `CALL prCreateAttachment(?,?,?,?,?,?,?,?)`,
+            `CALL prCreateAttachment(?,?,?,?,?,?,?)`,
             params
         );
 
         // HANA returns OUT parameters in an array of objects
-        const newId = result?.[0]?.ATTIDD;
-
+        const newId = result?.ATTIDD;
+        if (newId === 0) {
+            return 'Invalid ATTID ' + oResData.ATTID
+        }
+        if (oResData.ATTID !== 0) return 'Attachment Updated Successfully'
         return `Attachment Created Successfully. New ID: ${newId}`;
     } catch (error) {
         console.error(error);

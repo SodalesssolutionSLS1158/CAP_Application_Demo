@@ -122,6 +122,8 @@ context T {
             TOTSA : String(100);
             TOTNI : String(100);
             TOTNA : String(100);
+            REPBYNM : String(100);
+            INSLDNM : String(100);
             Attachments :Association to many ATTACHMENT on Attachments.INSID = INSID @title: 'Attachment Navigation';
             InspectionTeam:Association to many INSPECTIONTEAM on InspectionTeam.INSID = INSID @title: 'Inspection Team Navigation';
     }

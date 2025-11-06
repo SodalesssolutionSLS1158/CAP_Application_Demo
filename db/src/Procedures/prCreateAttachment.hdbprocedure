@@ -1,19 +1,18 @@
- PROCEDURE prCreateAttachment (
-      IN ATTID INTEGER,
-       FILNM NVARCHAR(100),
-       FLTYP NVARCHAR(100),
-       UPDBY NVARCHAR(100),
-       UPDDT DATE,
-       DESTX NVARCHAR(1000),
-       DMSID NVARCHAR(100),
-      OUT ATTIDD INTEGER
-    ) 
+PROCEDURE prCreateAttachment (
+    IN ATTID INTEGER,
+    FILNM NVARCHAR(100),
+    FLTYP NVARCHAR(100),
+    UPDBY NVARCHAR(100),
+    --  UPDDT DATE,
+    DESTX NVARCHAR(1000),
+    DMSID NVARCHAR(100),
+    OUT ATTIDD INTEGER
+  ) 
   LANGUAGE SQLSCRIPT 
-  SQL SECURITY INVOKER 
- AS 
-
-
+  SQL SECURITY INVOKER AS 
 BEGIN 
+  
+  IF :ATTID = 0 THEN 
   -- Insert record
   INSERT INTO INS_T_ATTTB (
       FILNM,
@@ -33,6 +32,26 @@ BEGIN
       DMSID,
       1
     );
-  -- Retrieve generated identity value (primary key)
-  --  CALL prGetSequence (COLUMN_NAME => 'ATTID',TABLE_NAME => 'INS_T_ATTTB',OSEQUENCE => ATTIDD);
+  CALL prGetSequence (
+    COLUMN_NAME => 'ATTID',
+    TABLE_NAME => 'INS_T_ATTTB',
+    OSEQUENCE => ATTIDD
+  );
+
+  ELSE 
+    
+      DECLARE isId INTEGER;
+      SELECT count(*) INTO isId FROM INS_T_ATTTB  WHERE ATTID =:ATTID;
+
+      IF :isId = 1 THEN
+      UPDATE INS_T_ATTTB
+      SET FILNM =:FILNM,FLTYP =:FLTYP,UPDBY =:UPDBY,UPDDT =CURRENT_DATE,DESTX =:DESTX,DMSID =:DMSID,ISDEL = 0
+      WHERE ATTID = :ATTID;
+
+      ATTIDD:=:ATTID;
+      ELSE
+        ATTIDD:=0;
+      END IF; 
+
+  END IF;
 END;

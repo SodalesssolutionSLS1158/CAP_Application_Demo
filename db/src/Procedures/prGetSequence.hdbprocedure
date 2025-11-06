@@ -1,0 +1,22 @@
+PROCEDURE prGetSequence (
+    IN COLUMN_NAME  NVARCHAR(5),    -- Column name
+        TABLE_NAME  NVARCHAR(30),   -- Table name
+    OUT OSEQUENCE   NVARCHAR(100)   -- Query of select sequence  
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   
+ 
+   AS
+BEGIN
+   
+   DECLARE SEQ NVARCHAR(30);    -- sequence value
+   DECLARE QU NVARCHAR(100);    -- Query that selects the seqyence
+   -- query to get sequence
+    SELECT '"_SYS_SEQUENCE_'|| COLUMN_ID||'_#0_#"' INTO SEQ FROM "syn_Table_Columns" WHERE TABLE_NAME=:TABLE_NAME AND COLUMN_NAME=:COLUMN_NAME;
+    
+    QU :='SELECT '||SEQ||'.CURRVAL FROM "syn_Dummy"';
+    
+    EXECUTE IMMEDIATE QU INTO OSEQUENCE;
+   
+END

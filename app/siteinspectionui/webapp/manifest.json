@@ -1,0 +1,164 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "siteinspectionui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.19.3",
+      "toolsId": "a1016c4b-6b31-42f4-aa62-a0a4452d3c13"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/site-inspection/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.142.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "siteinspectionui.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "getSiteInspectionList",
+          "target": "getSiteInspectionList"
+        },
+        {
+          "pattern": "getSiteInspection({key}):?query:",
+          "name": "getSiteInspectionObjectPage",
+          "target": "getSiteInspectionObjectPage"
+        },
+        {
+          "pattern": "getSiteInspection({key})/Attachments({key2}):?query:",
+          "name": "GetAttachmentObjectPage",
+          "target": "GetAttachmentObjectPage"
+        }
+      ],
+      "targets": {
+        "getSiteInspectionList": {
+          "type": "Component",
+          "id": "getSiteInspectionList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/getSiteInspection",
+              "variantManagement": "Page",
+              "navigation": {
+                "getSiteInspection": {
+                  "detail": {
+                    "route": "getSiteInspectionObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "getSiteInspectionObjectPage": {
+          "type": "Component",
+          "id": "getSiteInspectionObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/getSiteInspection",
+              "navigation": {
+                "Attachments": {
+                  "detail": {
+                    "route": "GetAttachmentObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "GetAttachmentObjectPage": {
+          "type": "Component",
+          "id": "GetAttachmentObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/getSiteInspection/Attachments"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}
