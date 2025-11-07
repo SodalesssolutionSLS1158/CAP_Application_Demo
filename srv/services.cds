@@ -1,4 +1,5 @@
-using { INS.T as INS } from '../db/schema';
+using { INS.T as INS} from '../db/schema';
+using { changetrack as db } from './change-tracking';
 
 service SiteInspection {
     
@@ -11,7 +12,7 @@ service SiteInspection {
     function GetData() returns String;
     function getNortwindCategory() returns String;
     function capView() returns String;
-    // entity getInspectionTeam as select from INS.INSPECTIONTEAM;
+    entity getInspectionTeam as select from INS.INSPECTIONTEAM;
     entity GetCreateAudit as select from INS.AUDITLOG;
     entity getSiteInspection as select from INS.SITEINSPECTION;
     type ids {
@@ -31,4 +32,11 @@ service SiteInspection {
                                     DMSID   : String;
                                     INSID   : Integer;
                                  };
+                                 entity ChangeLogs as projection on db.DemoSev;
 }
+
+// service MyService {
+
+//     entity ChangeLogs as projection on db.DemoSev;
+
+// }

@@ -82,6 +82,7 @@ context T {
         // ISDEL  : String(1);
         INSID : Integer;
         EMPNM : String(100);
+        EMPID : String(100);
     }
 
     entity AUDITLOG {
