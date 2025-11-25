@@ -121,20 +121,20 @@ module.exports = cds.service.impl(async function () {
     const db = cds.db;
 
     const { date, insid } = req.data;
-    // if (date && date) {
-    let query = `
+    if (date && date) {
+      let query = `
                SELECT 
                ATTID, FILNM, FLTYP, EMPNM AS UPDBYNM, UPDDT, DESTX, DMSID, INSID
                FROM INS_T_ATTTB
                INNER JOIN INS_T_EMPTB
                ON INS_T_ATTTB.UPDBY = INS_T_EMPTB.EMPID
                ${date ? 'WHERE UPDDT = ?' : ''} ${insid ? 'AND INSID= ?' : ''}`;
-    const result = await db.run(query,);
-    // const result = await db.run(query, [date, insid]);
-    return result;
-    // } else {
-    //   return 'Date and INSID is mandatory'
-    // }
+      // const result = await db.run(query);
+      const result = await db.run(query, [date, insid]);
+      return result;
+    } else {
+      return 'Date and INSID is mandatory'
+    }
   });
 
 })

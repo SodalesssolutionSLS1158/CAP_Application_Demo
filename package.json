@@ -9,24 +9,23 @@
     "@sap/cds": "^9",
     "@sap/xssec": "^4",
     "axios": "^1.13.1",
+    "cds-swagger-ui-express": "^0.10.0",
     "crypto-js": "^4.2.0",
     "express": "^4",
     "hana-cli": "^3.202504.1"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
-    "@sap/cds-dk": "^9",
+    "@sap/cds-dk": "^9.4.3",
     "cds-plugin-ui5": "^0.13.0",
     "mbt": "^1.2.29",
     "rimraf": "^5.0.5"
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-employeeattachments": "cds watch --open employeeattachments/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy SiteInspection --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-    "watch-siteinspectionui": "cds watch --open siteinspectionui/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "private": true,
   "cds": {
@@ -49,7 +48,8 @@
     "sql": {
       "native_hana_associations": false
     },
-    "server": {
+    "extends": "srv/server.js",
+    "serverOptions": {
       "body_parser": {
         "limit": "10mb"
       }

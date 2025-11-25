@@ -1,7 +1,7 @@
 using { INS.T as INS} from '../db/schema';
 using { changetrack as db } from './change-tracking';
 
-service SiteInspection {
+service SiteInspection @(path:'/admin'){
     
     @readonly
     entity GetAttachment as select from INS.ATTACHMENT;
