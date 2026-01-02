@@ -12,8 +12,6 @@ module.exports = cds.service.impl(async function () {
     // return " // 1. Connect to the database service"
     // const db = await cds.connect.to('db');
     // const { ATTACHMENT } = cds.entities('INS.T')
-
-
     // 2. Get the entity definition
     // const { ATTACHMENT } = db.entities;
     console.log(GetAttachment)

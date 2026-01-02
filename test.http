@@ -1,7 +1,2 @@
 ###
-PATCH  http://localhost:4004/odata/v4/site-inspection/ChangeLogs(0c906a0f-4a37-44e3-894c-b7a7fcbfb52d)
-Content-Type: application/json
-
-{
-    "MYID":123
-}
+GET http://localhost:4004/odata/v2/admin/getSiteInspection

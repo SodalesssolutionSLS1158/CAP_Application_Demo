@@ -75,14 +75,15 @@ context T {
 
     @cds.persistence.exists
     @cds.persistence.calcview
+    @readonly
     entity INSPECTIONTEAM {
         INSTID : Integer;
         INTEID : String(100);
         DESCP  : String(1000);
         // ISDEL  : String(1);
-        INSID : Integer;
-        EMPNM : String(100);
-        EMPID : String(100);
+        INSID  : Integer;
+        EMPNM  : String(100);
+        EMPID  : String(100);
     }
 
     entity AUDITLOG {
@@ -92,6 +93,7 @@ context T {
             UPDBY : String(500);
             ISDEL : String(1);
     }
+
     @cds.persistence.exists
     @cds.persistence.calcview
     entity ATTACHMENTVIEW {
@@ -109,24 +111,43 @@ context T {
     @cds.persistence.exists
     @cds.persistence.calcview
     entity SITEINSPECTION {
-        key INSID : Integer;
-            REPBY : String(100);
-            FACID : String(10);
-            DEPID : String(10);
-            AREAT : String(100);
-            INSLD : String(100);
-            SHIFT : String(10);
-            INSDT : Date;
-            BULCL : String(100);
-            SICID : String(10);
-            POSCT : String(5000);
-            TOTSA : String(100);
-            TOTNI : String(100);
-            TOTNA : String(100);
-            REPBYNM : String(100);
-            INSLDNM : String(100);
-            Attachments :Association to many ATTACHMENT on Attachments.INSID = INSID @title: 'Attachment Navigation';
-            InspectionTeam:Association to many INSPECTIONTEAM on InspectionTeam.INSID = INSID @title: 'Inspection Team Navigation';
+        key INSID          : Integer;
+            REPBY          : String(100);
+            FACID          : String(10);
+            DEPID          : String(10);
+            AREAT          : String(100);
+            INSLD          : String(100);
+            SHIFT          : String(10);
+            INSDT          : Date;
+            BULCL          : String(100);
+            SICID          : String(10);
+            POSCT          : String(5000);
+            TOTSA          : String(100);
+            TOTNI          : String(100);
+            TOTNA          : String(100);
+            REPBYNM        : String(100);
+            INSLDNM        : String(100);
+            Attachments    : Association to many ATTACHMENT
+                                 on Attachments.INSID = INSID
+                             @title: 'Attachment Navigation';
+            InspectionTeam : Association to many INSPECTIONTEAM
+                                 on InspectionTeam.INSID = INSID
+                             @title: 'Inspection Team Navigation';
+            CorrectiveAction:Association to many CORRECTIVEACTIONCAL on CorrectiveAction.INSID = INSID
+    }
+
+    @cds.persistence.exists
+    @cds.persistence.calcview
+    @readonly
+    entity CORRECTIVEACTIONCAL {
+        key CAID  : Integer;
+            INSID : Integer;
+            CAASN : String(100);
+            CASTS : String(100);
+            COMDT : Date;
+            NOTES : String(5000);
+            CREBY : String(100);
+            CREDT : Date;
     }
 
 }

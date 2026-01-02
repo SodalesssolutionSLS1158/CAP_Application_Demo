@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="INS_T_CORRECTIVEACTIONCAL" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS">
+<descriptions defaultDescription="INS_T_CORRECTIVEACTIONCAL"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="INS_T_CATAB">
+    <resourceUri>INS_T_CATAB</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews/>
+
+<logicalModel id="INS_T_CATAB">
+  <attributes>
+    <attribute id="CAID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CAID"/>
+      <keyMapping columnObjectName="INS_T_CATAB" columnName="CAID"/>
+    </attribute>
+    <attribute id="INSID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INSID"/>
+      <keyMapping columnObjectName="INS_T_CATAB" columnName="INSID"/>
+    </attribute>
+    <attribute id="CAASN" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CAASN"/>
+      <keyMapping columnObjectName="INS_T_CATAB" columnName="CAASN"/>
+    </attribute>
+    <attribute id="CASTS" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CASTS"/>
+      <keyMapping columnObjectName="INS_T_CATAB" columnName="CASTS"/>
+    </attribute>
+    <attribute id="COMDT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMDT"/>
+      <keyMapping columnObjectName="INS_T_CATAB" columnName="COMDT"/>
+    </attribute>
+    <attribute id="NOTES" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOTES"/>
+      <keyMapping columnObjectName="INS_T_CATAB" columnName="NOTES"/>
+    </attribute>
+    <attribute id="CREBY" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREBY"/>
+      <keyMapping columnObjectName="INS_T_CATAB" columnName="CREBY"/>
+    </attribute>
+    <attribute id="CREDT" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREDT"/>
+      <keyMapping columnObjectName="INS_T_CATAB" columnName="CREDT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  </shapes>
+</layout>
+</Calculation:scenario>
